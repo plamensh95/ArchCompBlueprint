@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		253D7DEB20CA5C6C008ABF4A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 253D7DEA20CA5C6C008ABF4A /* GoogleService-Info.plist */; };
+		253D7DED20CA5D7E008ABF4A /* FRTFirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D7DEC20CA5D7E008ABF4A /* FRTFirebaseService.swift */; };
+		253D7DF020CA5F1F008ABF4A /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D7DEF20CA5F1F008ABF4A /* Navigator.swift */; };
 		25E48EC320CA54F400294095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E48EC220CA54F400294095 /* AppDelegate.swift */; };
 		25E48EC520CA54F400294095 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E48EC420CA54F400294095 /* ViewController.swift */; };
 		25E48EC820CA54F400294095 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E48EC620CA54F400294095 /* Main.storyboard */; };
 		25E48ECA20CA54F600294095 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25E48EC920CA54F600294095 /* Assets.xcassets */; };
 		25E48ECD20CA54F600294095 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E48ECB20CA54F600294095 /* LaunchScreen.storyboard */; };
+		9470146F2F802F658F87011A /* Pods_FireCart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0DD0A58122E33AD160C5A /* Pods_FireCart.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		253D7DEA20CA5C6C008ABF4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		253D7DEC20CA5D7E008ABF4A /* FRTFirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRTFirebaseService.swift; sourceTree = "<group>"; };
+		253D7DEF20CA5F1F008ABF4A /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		25E48EBF20CA54F400294095 /* FireCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E48EC220CA54F400294095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25E48EC420CA54F400294095 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +29,9 @@
 		25E48EC920CA54F600294095 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25E48ECC20CA54F600294095 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25E48ECE20CA54F600294095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4AE19E00CD476822A764AEB /* Pods-FireCart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCart.release.xcconfig"; path = "Pods/Target Support Files/Pods-FireCart/Pods-FireCart.release.xcconfig"; sourceTree = "<group>"; };
+		A673E50856DE6BDAA784C016 /* Pods-FireCart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireCart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FireCart/Pods-FireCart.debug.xcconfig"; sourceTree = "<group>"; };
+		DDD0DD0A58122E33AD160C5A /* Pods_FireCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,50 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9470146F2F802F658F87011A /* Pods_FireCart.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B3C9C00CE91C098D2EE2577 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0DD0A58122E33AD160C5A /* Pods_FireCart.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		234415ABA5F10A27A26E6FF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A673E50856DE6BDAA784C016 /* Pods-FireCart.debug.xcconfig */,
+				A4AE19E00CD476822A764AEB /* Pods-FireCart.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		253D7DEE20CA5DE1008ABF4A /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				253D7DEF20CA5F1F008ABF4A /* Navigator.swift */,
+				253D7DEC20CA5D7E008ABF4A /* FRTFirebaseService.swift */,
+				25E48ECB20CA54F600294095 /* LaunchScreen.storyboard */,
+				253D7DEA20CA5C6C008ABF4A /* GoogleService-Info.plist */,
+				25E48ECE20CA54F600294095 /* Info.plist */,
+				25E48EC920CA54F600294095 /* Assets.xcassets */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
 		25E48EB620CA54F400294095 = {
 			isa = PBXGroup;
 			children = (
 				25E48EC120CA54F400294095 /* FireCart */,
 				25E48EC020CA54F400294095 /* Products */,
+				234415ABA5F10A27A26E6FF9 /* Pods */,
+				1B3C9C00CE91C098D2EE2577 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,12 +97,10 @@
 		25E48EC120CA54F400294095 /* FireCart */ = {
 			isa = PBXGroup;
 			children = (
+				253D7DEE20CA5DE1008ABF4A /* SupportFiles */,
 				25E48EC220CA54F400294095 /* AppDelegate.swift */,
 				25E48EC420CA54F400294095 /* ViewController.swift */,
 				25E48EC620CA54F400294095 /* Main.storyboard */,
-				25E48EC920CA54F600294095 /* Assets.xcassets */,
-				25E48ECB20CA54F600294095 /* LaunchScreen.storyboard */,
-				25E48ECE20CA54F600294095 /* Info.plist */,
 			);
 			path = FireCart;
 			sourceTree = "<group>";
@@ -71,9 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25E48ED120CA54F600294095 /* Build configuration list for PBXNativeTarget "FireCart" */;
 			buildPhases = (
+				580211DBCEAEF14C15514B07 /* [CP] Check Pods Manifest.lock */,
 				25E48EBB20CA54F400294095 /* Sources */,
 				25E48EBC20CA54F400294095 /* Frameworks */,
 				25E48EBD20CA54F400294095 /* Resources */,
+				89829703C9AD406E2BDA9F2F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25E48ECD20CA54F600294095 /* LaunchScreen.storyboard in Resources */,
+				253D7DEB20CA5C6C008ABF4A /* GoogleService-Info.plist in Resources */,
 				25E48ECA20CA54F600294095 /* Assets.xcassets in Resources */,
 				25E48EC820CA54F400294095 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +174,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		580211DBCEAEF14C15514B07 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FireCart-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89829703C9AD406E2BDA9F2F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FireCart/Pods-FireCart-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FireCart/Pods-FireCart-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		25E48EBB20CA54F400294095 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				25E48EC520CA54F400294095 /* ViewController.swift in Sources */,
+				253D7DF020CA5F1F008ABF4A /* Navigator.swift in Sources */,
 				25E48EC320CA54F400294095 /* AppDelegate.swift in Sources */,
+				253D7DED20CA5D7E008ABF4A /* FRTFirebaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +391,11 @@
 		};
 		25E48ED220CA54F600294095 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A673E50856DE6BDAA784C016 /* Pods-FireCart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FireCart/Info.plist;
+				INFOPLIST_FILE = FireCart/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -295,10 +409,11 @@
 		};
 		25E48ED320CA54F600294095 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4AE19E00CD476822A764AEB /* Pods-FireCart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = FireCart/Info.plist;
+				INFOPLIST_FILE = FireCart/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

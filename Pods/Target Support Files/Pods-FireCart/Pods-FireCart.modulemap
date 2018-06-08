@@ -1,0 +1,6 @@
+framework module Pods_FireCart {
+  umbrella header "Pods-FireCart-umbrella.h"
+
+  export *
+  module * { export * }
+}
