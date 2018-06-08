@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B867F4ED662B04424D8FAD0BF5A5E591"
+               BlueprintIdentifier = "E8E463ED418460D196CDD7CDBBFD7173"
                BuildableName = "Pods_FireCart.framework"
                BlueprintName = "Pods-FireCart"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B867F4ED662B04424D8FAD0BF5A5E591"
+            BlueprintIdentifier = "E8E463ED418460D196CDD7CDBBFD7173"
             BuildableName = "Pods_FireCart.framework"
             BlueprintName = "Pods-FireCart"
             ReferencedContainer = "container:Pods.xcodeproj">
