@@ -37,7 +37,7 @@ extension UIViewController {
 
 enum Storyboard:String {
     
-    case Main
+    case Login
     
     func instanstiateController (_ viewController : UIViewController.Type) -> UIViewController? {
         return viewController.instantiateControllerFrom(storyboard:self.rawValue)
@@ -56,7 +56,7 @@ enum UserState {
 class Navigator {
     
     func provideInitialController () -> UIViewController {
-        return Storyboard.Main.instanstiateController(ViewController.self)!
+        return Storyboard.Login.instanstiateController(LoginViewController.self)!
     }
     
     private func getUserState () -> UserState {
