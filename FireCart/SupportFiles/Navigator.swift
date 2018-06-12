@@ -38,6 +38,7 @@ extension UIViewController {
 enum Storyboard:String {
     
     case Login
+    case Register
     
     func instanstiateController (_ viewController : UIViewController.Type) -> UIViewController? {
         return viewController.instantiateControllerFrom(storyboard:self.rawValue)

@@ -18,8 +18,18 @@
 		253D7DFF20CA9960008ABF4A /* LoginConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D7DF820CA9960008ABF4A /* LoginConfigurator.swift */; };
 		253D7E0120CA9B0F008ABF4A /* FRTAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D7E0020CA9B0F008ABF4A /* FRTAuthenticationService.swift */; };
 		253D7E0520CAB780008ABF4A /* FRTFirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253D7E0420CAB780008ABF4A /* FRTFirestoreService.swift */; };
+		2572AFC920CEB447003E5F42 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2572AFC220CEB447003E5F42 /* Register.storyboard */; };
+		2572AFCA20CEB447003E5F42 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFC320CEB447003E5F42 /* RegisterPresenter.swift */; };
+		2572AFCB20CEB447003E5F42 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFC420CEB447003E5F42 /* RegisterRouter.swift */; };
+		2572AFCC20CEB447003E5F42 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFC520CEB447003E5F42 /* RegisterViewController.swift */; };
+		2572AFCD20CEB447003E5F42 /* RegisterProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFC620CEB447003E5F42 /* RegisterProtocols.swift */; };
+		2572AFCE20CEB447003E5F42 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFC720CEB447003E5F42 /* RegisterInteractor.swift */; };
+		2572AFCF20CEB447003E5F42 /* RegisterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFC820CEB447003E5F42 /* RegisterConfigurator.swift */; };
+		2572AFD620CEC09F003E5F42 /* HudsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFD520CEC09F003E5F42 /* HudsProtocol.swift */; };
+		2572AFDA20CEC1D1003E5F42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFD920CEC1D1003E5F42 /* User.swift */; };
+		2572AFDC20CEC2F6003E5F42 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFDB20CEC2F6003E5F42 /* EncodableExtension.swift */; };
+		2572AFDE20CEC310003E5F42 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572AFDD20CEC310003E5F42 /* Const.swift */; };
 		25E48EC320CA54F400294095 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E48EC220CA54F400294095 /* AppDelegate.swift */; };
-		25E48EC820CA54F400294095 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E48EC620CA54F400294095 /* Main.storyboard */; };
 		25E48ECA20CA54F600294095 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25E48EC920CA54F600294095 /* Assets.xcassets */; };
 		25E48ECD20CA54F600294095 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25E48ECB20CA54F600294095 /* LaunchScreen.storyboard */; };
 		9470146F2F802F658F87011A /* Pods_FireCart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0DD0A58122E33AD160C5A /* Pods_FireCart.framework */; };
@@ -37,9 +47,19 @@
 		253D7DF820CA9960008ABF4A /* LoginConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginConfigurator.swift; sourceTree = "<group>"; };
 		253D7E0020CA9B0F008ABF4A /* FRTAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRTAuthenticationService.swift; sourceTree = "<group>"; };
 		253D7E0420CAB780008ABF4A /* FRTFirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRTFirestoreService.swift; sourceTree = "<group>"; };
+		2572AFC220CEB447003E5F42 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		2572AFC320CEB447003E5F42 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		2572AFC420CEB447003E5F42 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		2572AFC520CEB447003E5F42 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2572AFC620CEB447003E5F42 /* RegisterProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProtocols.swift; sourceTree = "<group>"; };
+		2572AFC720CEB447003E5F42 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		2572AFC820CEB447003E5F42 /* RegisterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterConfigurator.swift; sourceTree = "<group>"; };
+		2572AFD520CEC09F003E5F42 /* HudsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudsProtocol.swift; sourceTree = "<group>"; };
+		2572AFD920CEC1D1003E5F42 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2572AFDB20CEC2F6003E5F42 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
+		2572AFDD20CEC310003E5F42 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		25E48EBF20CA54F400294095 /* FireCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25E48EC220CA54F400294095 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25E48EC720CA54F400294095 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25E48EC920CA54F600294095 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25E48ECC20CA54F600294095 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25E48ECE20CA54F600294095 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				253D7DEF20CA5F1F008ABF4A /* Navigator.swift */,
+				2572AFDD20CEC310003E5F42 /* Const.swift */,
 				253D7E0020CA9B0F008ABF4A /* FRTAuthenticationService.swift */,
 				253D7E0420CAB780008ABF4A /* FRTFirestoreService.swift */,
 				25E48ECB20CA54F600294095 /* LaunchScreen.storyboard */,
@@ -94,6 +115,15 @@
 		253D7DF120CA993F008ABF4A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2572AFD020CEB458003E5F42 /* Login */,
+				2572AFD120CEB46E003E5F42 /* Register */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2572AFD020CEB458003E5F42 /* Login */ = {
+			isa = PBXGroup;
+			children = (
 				253D7DF220CA9960008ABF4A /* Login.storyboard */,
 				253D7DF320CA9960008ABF4A /* LoginPresenter.swift */,
 				253D7DF420CA9960008ABF4A /* LoginRouter.swift */,
@@ -102,13 +132,53 @@
 				253D7DF720CA9960008ABF4A /* LoginInteractor.swift */,
 				253D7DF820CA9960008ABF4A /* LoginConfigurator.swift */,
 			);
-			path = Scenes;
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2572AFD120CEB46E003E5F42 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2572AFC220CEB447003E5F42 /* Register.storyboard */,
+				2572AFC320CEB447003E5F42 /* RegisterPresenter.swift */,
+				2572AFC420CEB447003E5F42 /* RegisterRouter.swift */,
+				2572AFC520CEB447003E5F42 /* RegisterViewController.swift */,
+				2572AFC620CEB447003E5F42 /* RegisterProtocols.swift */,
+				2572AFC720CEB447003E5F42 /* RegisterInteractor.swift */,
+				2572AFC820CEB447003E5F42 /* RegisterConfigurator.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		2572AFD420CEC00B003E5F42 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2572AFD520CEC09F003E5F42 /* HudsProtocol.swift */,
+				2572AFDB20CEC2F6003E5F42 /* EncodableExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2572AFD720CEC1B8003E5F42 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2572AFD820CEC1C2003E5F42 /* Model */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2572AFD820CEC1C2003E5F42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2572AFD920CEC1D1003E5F42 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		25E48EB620CA54F400294095 = {
 			isa = PBXGroup;
 			children = (
 				25E48EC120CA54F400294095 /* FireCart */,
+				25E48EC220CA54F400294095 /* AppDelegate.swift */,
 				25E48EC020CA54F400294095 /* Products */,
 				234415ABA5F10A27A26E6FF9 /* Pods */,
 				1B3C9C00CE91C098D2EE2577 /* Frameworks */,
@@ -126,10 +196,10 @@
 		25E48EC120CA54F400294095 /* FireCart */ = {
 			isa = PBXGroup;
 			children = (
+				2572AFD720CEC1B8003E5F42 /* Data */,
+				2572AFD420CEC00B003E5F42 /* Extensions */,
 				253D7DF120CA993F008ABF4A /* Scenes */,
 				253D7DEE20CA5DE1008ABF4A /* SupportFiles */,
-				25E48EC220CA54F400294095 /* AppDelegate.swift */,
-				25E48EC620CA54F400294095 /* Main.storyboard */,
 			);
 			path = FireCart;
 			sourceTree = "<group>";
@@ -199,7 +269,7 @@
 				253D7DEB20CA5C6C008ABF4A /* GoogleService-Info.plist in Resources */,
 				25E48ECA20CA54F600294095 /* Assets.xcassets in Resources */,
 				253D7DF920CA9960008ABF4A /* Login.storyboard in Resources */,
-				25E48EC820CA54F400294095 /* Main.storyboard in Resources */,
+				2572AFC920CEB447003E5F42 /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,12 +396,22 @@
 				253D7DFC20CA9960008ABF4A /* LoginViewController.swift in Sources */,
 				253D7DF020CA5F1F008ABF4A /* Navigator.swift in Sources */,
 				253D7E0520CAB780008ABF4A /* FRTFirestoreService.swift in Sources */,
+				2572AFCA20CEB447003E5F42 /* RegisterPresenter.swift in Sources */,
 				253D7DFB20CA9960008ABF4A /* LoginRouter.swift in Sources */,
+				2572AFCB20CEB447003E5F42 /* RegisterRouter.swift in Sources */,
+				2572AFCE20CEB447003E5F42 /* RegisterInteractor.swift in Sources */,
 				253D7E0120CA9B0F008ABF4A /* FRTAuthenticationService.swift in Sources */,
 				25E48EC320CA54F400294095 /* AppDelegate.swift in Sources */,
+				2572AFDE20CEC310003E5F42 /* Const.swift in Sources */,
 				253D7DFD20CA9960008ABF4A /* LoginProtocols.swift in Sources */,
 				253D7DFA20CA9960008ABF4A /* LoginPresenter.swift in Sources */,
+				2572AFD620CEC09F003E5F42 /* HudsProtocol.swift in Sources */,
+				2572AFDC20CEC2F6003E5F42 /* EncodableExtension.swift in Sources */,
+				2572AFCC20CEB447003E5F42 /* RegisterViewController.swift in Sources */,
 				253D7DFF20CA9960008ABF4A /* LoginConfigurator.swift in Sources */,
+				2572AFDA20CEC1D1003E5F42 /* User.swift in Sources */,
+				2572AFCF20CEB447003E5F42 /* RegisterConfigurator.swift in Sources */,
+				2572AFCD20CEB447003E5F42 /* RegisterProtocols.swift in Sources */,
 				253D7DFE20CA9960008ABF4A /* LoginInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,14 +419,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		25E48EC620CA54F400294095 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				25E48EC720CA54F400294095 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		25E48ECB20CA54F600294095 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
