@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit.UIViewController
 
 class LoginPresenter {
     
@@ -26,29 +25,37 @@ class LoginPresenter {
 }
 
 extension LoginPresenter: LoginViewToPresenterProtocol {
-    
-    func facebookButtonPressed(from viewController: UIViewController) {
-        interactor.authenticate(with: .facebook, from: viewController, phoneNumber: nil)
+    func loginUser(with email: String, and password: String) {
+        interactor.loginUser(with: email, and: password)
     }
     
-    func googleButtonPressed(from viewController: UIViewController) {
-        interactor.authenticate(with: .facebook, from: nil, phoneNumber: nil)
+    func facebookButtonPressed() {
+        interactor.authenticate(with: .facebook, phoneNumber: nil)
     }
     
-    func phoneButtonPressed(from viewController: UIViewController, phoneNumber: String) {
-        interactor.authenticate(with: .phone, from: nil, phoneNumber: phoneNumber)
+    func googleButtonPressed() {
+        interactor.authenticate(with: .facebook, phoneNumber: nil)
     }
     
-    func logoutButtonPressed() {
-        interactor.logoutButtonPressed()
+    func phoneButtonPressed(phoneNumber: String) {
+        interactor.authenticate(with: .phone, phoneNumber: phoneNumber)
+    }
+    
+    func registerButtonPressed() {
+        router.navigateToRegisterScene()
     }
     
 }
 
 extension LoginPresenter: LoginInterectorToPresenterProtocol {
-    func dataFetched() {
+    
+    func loggedInSuccessfuly() {
         
+        print("Login successful")
     }
     
+    func errorOccured(error: String) {
+        view?.displayError(error: error)
+    }
     
 }

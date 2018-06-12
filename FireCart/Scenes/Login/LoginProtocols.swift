@@ -7,36 +7,36 @@
 //
 
 import Foundation
-import UIKit.UIViewController
 
 //ViewController -> Presenter
 protocol LoginViewToPresenterProtocol: class{
-    func facebookButtonPressed(from viewController: UIViewController)
-    func googleButtonPressed(from viewController: UIViewController)
-    func phoneButtonPressed(from viewController: UIViewController, phoneNumber: String)
-    func logoutButtonPressed()
+    func facebookButtonPressed()
+    func googleButtonPressed()
+    func phoneButtonPressed(phoneNumber: String)
+    func registerButtonPressed()
+    func loginUser(with email: String, and password: String)
 }
 
 //Presenter -> ViewController
 protocol LoginPresenterToViewProtocol: class{
-    func displaySomething()
+    func displayError(error: String)
 }
 
 //Presenter -> Router
 protocol LoginPresenterToRouterProtocol: class{
-    func navigateToSomewhere();
+    func navigateToRegisterScene()
 }
 
 //Presenter -> Interactor
 protocol LoginPresentorToInterectorProtocol: class{
-    func fetchData();
-    func authenticate(with provider: Provider,from viewController: UIViewController?, phoneNumber: String?)
-    func logoutButtonPressed()
+    func authenticate(with provider: Provider, phoneNumber: String?)
+    func loginUser(with email: String, and password: String)
 }
 
 //Interactor -> Presenter
 protocol LoginInterectorToPresenterProtocol: class{
-    func dataFetched();
+    func loggedInSuccessfuly()
+    func errorOccured(error: String)
 }
 
 
