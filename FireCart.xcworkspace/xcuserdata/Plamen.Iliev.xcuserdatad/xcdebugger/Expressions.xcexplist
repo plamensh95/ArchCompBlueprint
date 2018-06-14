@@ -3,30 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "FRTAuthenticationService.signIn(using:from:phoneNumber:):FRTAuthenticationService.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "FBSDKAccessToken.current()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in FRTAuthenticationService.authenticateToFirebase(with:):FRTAuthenticationService.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "error.localizedDescription">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "FRTAuthenticationService.logout():FRTAuthenticationService.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "auth.currentUser?.providerID">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "closure #2 in FRTAuthenticationService.signIn(using:from:phoneNumber:):FRTAuthenticationService.swift">
          <PersistentStrings>
             <PersistentString
@@ -42,6 +18,85 @@
             </PersistentString>
             <PersistentString
                value = "auth.currentUser.email">
+            </PersistentString>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in FRTAuthenticationService.authenticateToFirebase(with:):FRTAuthenticationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error.localizedDescription">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.handlePan(sender:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "isDrawerToggled">
+            </PersistentString>
+            <PersistentString
+               value = "drawerViewLeadingConstraint.constant">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FRTAuthenticationService.logout():FRTAuthenticationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "auth.currentUser?.providerID">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MenuViewController.viewDidAppear(_:):MenuViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.superview">
+            </PersistentString>
+            <PersistentString
+               value = "contentView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.handlePan(_:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "drawerViewLeadingConstraint.constant">
+            </PersistentString>
+            <PersistentString
+               value = "isDrawerToggled">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.toggleDrawerInitially():MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dra">
+            </PersistentString>
+            <PersistentString
+               value = "drawerContentView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FRTAuthenticationService.signIn(using:from:phoneNumber:):FRTAuthenticationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "FBSDKAccessToken.current()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.viewDidAppear(_:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "menu.view">
             </PersistentString>
             <PersistentString
                value = "">
