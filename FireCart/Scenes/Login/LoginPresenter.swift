@@ -50,7 +50,7 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
 extension LoginPresenter: LoginInterectorToPresenterProtocol {
     
     func loggedInSuccessfuly() {
-        
+        router.navigateToMainScene()
         print("Login successful")
     }
     

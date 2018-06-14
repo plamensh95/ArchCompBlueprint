@@ -9,13 +9,19 @@
 import UIKit
 
 class LoginRouter: LoginPresenterToRouterProtocol {
-    
+
     weak var viewController: LoginViewController?
     
     // MARK: - Navigation
     
     func navigateToRegisterScene() {
         if let vc = Storyboard.Register.instanstiateController(RegisterViewController.self) {
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func navigateToMainScene() {
+        if let vc = Storyboard.Main.instanstiateController(MainViewController.self) {
             viewController?.navigationController?.pushViewController(vc, animated: true)
         }
     }

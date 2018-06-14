@@ -103,7 +103,7 @@ class FRTAuthenticationService: NSObject, GIDSignInDelegate, HudsProtocol {
     
     func loginUser(with email: String, and password: String, completion: @escaping (Result) -> ()) {
         showHuds()
-        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+        auth.signIn(withEmail: email, password: password) { (authResult, error) in
             self.hideHuds()
             if let result = authResult {
                 let user = User(id: result.user.uid, name: result.user.displayName ?? "", email: email)
@@ -144,6 +144,10 @@ class FRTAuthenticationService: NSObject, GIDSignInDelegate, HudsProtocol {
                 })
             }
         }
+    }
+    
+    func isUserLogged() -> Bool {
+        return auth.currentUser != nil ? true : false
     }
     
     // MARK: - GIDSignInDelegate

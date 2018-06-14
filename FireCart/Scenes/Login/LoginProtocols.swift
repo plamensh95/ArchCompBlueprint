@@ -25,6 +25,7 @@ protocol LoginPresenterToViewProtocol: class{
 //Presenter -> Router
 protocol LoginPresenterToRouterProtocol: class{
     func navigateToRegisterScene()
+    func navigateToMainScene()
 }
 
 //Presenter -> Interactor

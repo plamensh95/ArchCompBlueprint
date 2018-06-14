@@ -39,6 +39,7 @@ enum Storyboard:String {
     
     case Login
     case Register
+    case Main
     
     func instanstiateController (_ viewController : UIViewController.Type) -> UIViewController? {
         return viewController.instantiateControllerFrom(storyboard:self.rawValue)
@@ -49,19 +50,23 @@ enum UserState {
     
     case notLogged
     case logged
-    case banned
-    case waitingRegistrationApproval
     
 }
 
 class Navigator {
     
     func provideInitialController () -> UIViewController {
-        return Storyboard.Login.instanstiateController(LoginViewController.self)!
+        switch getUserState() {
+        case .logged:
+            return Storyboard.Main.instanstiateController(MainViewController.self)!
+        case .notLogged:
+            return Storyboard.Login.instanstiateController(LoginViewController.self)!
+        }
+        
     }
     
     private func getUserState () -> UserState {
-        return .notLogged
+        return FRTAuthenticationService.shared.isUserLogged() ? .logged : .notLogged
     }
  
 }

@@ -15,6 +15,7 @@ enum JSONError : Error {
 
 enum AssetName: String {
     case loading = "loading"
+    case menu = "menu"
 }
 
 enum DialogTittles: String {
