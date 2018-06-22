@@ -20,12 +20,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-Nj-6KN">
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-Nj-6KN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <tableView contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yoa-dr-rGU">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="667"/>
+                    <rect key="frame" x="-240" y="0.0" width="240" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="LiE-oQ-gnd"/>
@@ -43,9 +43,9 @@
                     </userDefinedRuntimeAttributes>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Yoa-dr-rGU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1rC-99-eLt"/>
+                <constraint firstItem="Yoa-dr-rGU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-240" id="1rC-99-eLt"/>
                 <constraint firstAttribute="trailing" secondItem="SeD-Nj-6KN" secondAttribute="trailing" id="5Cs-Og-7cS"/>
                 <constraint firstAttribute="bottom" secondItem="SeD-Nj-6KN" secondAttribute="bottom" id="KGj-o7-n1M"/>
                 <constraint firstItem="Yoa-dr-rGU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OEh-DX-7BS"/>

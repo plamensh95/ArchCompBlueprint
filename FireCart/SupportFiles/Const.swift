@@ -52,3 +52,4 @@ enum Result {
     case success(result: Any?)
     case error(NSError)
 }
+
