@@ -34,7 +34,7 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
     }
     
     func googleButtonPressed() {
-        interactor.authenticate(with: .facebook, phoneNumber: nil)
+        interactor.authenticate(with: .google, phoneNumber: nil)
     }
     
     func phoneButtonPressed(phoneNumber: String) {

@@ -23,23 +23,14 @@ extension UINavigationController {
     }
 }
 
-
-extension UIViewController {
-    static func instantiateControllerFrom(storyboard : String) -> UIViewController? {
-        let viewControllerIdentifier = String(describing:self)
-
-        let storyboard = UIStoryboard(name: storyboard, bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerIdentifier)
-
-        return viewController
-    }
-}
-
 enum Storyboard:String {
     
     case Login
     case Register
     case Main
+    case Menu
+    case Orders
+    case Cart
     
     func instanstiateController (_ viewController : UIViewController.Type) -> UIViewController? {
         return viewController.instantiateControllerFrom(storyboard:self.rawValue)
@@ -55,7 +46,7 @@ enum UserState {
 
 class Navigator {
     
-    func provideInitialController () -> UIViewController {
+    func provideInitialController() -> UIViewController {
         switch getUserState() {
         case .logged:
             return Storyboard.Main.instanstiateController(MainViewController.self)!

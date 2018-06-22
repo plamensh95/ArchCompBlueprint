@@ -14,8 +14,6 @@ let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate)!
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    
-
     var window: UIWindow?
     var navigator = Navigator()
 

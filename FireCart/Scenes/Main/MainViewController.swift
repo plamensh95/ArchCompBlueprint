@@ -8,52 +8,42 @@
 
 import UIKit
 
-class MainViewController: UIViewController, MainPresenterToViewProtocol {
+class MainViewController: UIViewController {
     
-    var presenter: MainPresenter!
-    @IBOutlet weak var contentView: UIView!
-    lazy var drawer: DrawerViewController = DrawerViewController(nibName: "DrawerViewController", bundle: nil)
-
-    // MARK: - Object lifecycle
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        // Do not ask for presenter before this call
-        self.setupVIPER()
-    }
+    @IBOutlet weak var contentContainer: UIView!
+    var drawerVC: DrawerViewController?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-        // Do not ask for presenter before this call
-        self.setupVIPER()
-    }
+    var currentOption: DrawerOption = .Menu
+    var isFirstLoad = true
+    var leftEdgePanRecognizer = UIScreenEdgePanGestureRecognizer()
+    var rightEdgePanRecognizer = UIScreenEdgePanGestureRecognizer()
+    var taprecognizer = UITapGestureRecognizer()
     
-    // MARK: - Initilization
-    func setupVIPER() {
-        MainConfigurator.configure(viewController: self)
-    }
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureNavigationBar()
+        setupGestureRecognizers()
     }
     
     override func viewDidLayoutSubviews() {
         // Do not ask for drawer before this call
-        setupDrawer()
-    }
-    
-    // MARK: - PresenterToViewProtocol
-    func displaySomething() {
-        
+        if isFirstLoad {
+            addViewController(for: currentOption)
+//            initDrawer(toggled: true)
+            isFirstLoad = false
+        }
     }
     
     // MARK: - Actions
     @objc func menuButtonPressed(sender: UIBarButtonItem) {
-        drawer.isDrawerToggled = !drawer.isDrawerToggled
+        if let drawer = drawerVC {
+            drawer.handleDrawer(toggled: !drawer.isDrawerToggled)
+        } else {
+            initDrawer(toggled: true)
+        }
     }
     
     func configureNavigationBar() {
@@ -63,23 +53,71 @@ class MainViewController: UIViewController, MainPresenterToViewProtocol {
         navigationItem.leftBarButtonItem?.tintColor = .black
     }
     
+    func initDrawer(toggled : Bool) {
+        drawerVC = DrawerViewController(nibName: "DrawerViewController", toggled: toggled)
+        drawerVC?.drawerDelegate = self
+        addViewControllerFillBounds(containedViewController: drawerVC!, in: contentContainer)
+    }
+    
 }
 
-extension MainViewController: OptionDelegate {
-    func setupDrawer() {
-        drawer.optionDelegate = self
-        addChildViewController(drawer)
-        drawer.didMove(toParentViewController: self)
-        contentView.addSubview(drawer.view)
-        drawer.view.translatesAutoresizingMaskIntoConstraints = false
-        drawer.view.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        drawer.view.heightAnchor.constraint(equalTo: contentView.heightAnchor).isActive = true
-        drawer.view.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
-        drawer.view.layoutIfNeeded()
+extension MainViewController: UIGestureRecognizerDelegate {
+    private func setupGestureRecognizers() {
+        leftEdgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleEdgePan(sender:)))
+        leftEdgePanRecognizer.edges = .left
+        rightEdgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleEdgePan(sender:)))
+        rightEdgePanRecognizer.edges = .right
+        view.addGestureRecognizer(leftEdgePanRecognizer)
+        view.addGestureRecognizer(rightEdgePanRecognizer)
+        leftEdgePanRecognizer.delegate = self
+        rightEdgePanRecognizer.delegate = self
     }
     
-    func optionPressed(option: String) {
-        print(option)
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: view)
+        if gestureRecognizer.isKind(of: UIScreenEdgePanGestureRecognizer.self) {
+            if let _ = drawerVC {
+                return gestureRecognizer == rightEdgePanRecognizer && location.x > view.width - 10
+            } else if gestureRecognizer == leftEdgePanRecognizer && location.x < 10 {
+                initDrawer(toggled: false)
+                return true
+            }
+        }
+        return false
+    }
+    
+    @objc func handleEdgePan(sender: UIScreenEdgePanGestureRecognizer) {
+        drawerVC?.handlePan(sender: sender)
     }
     
 }
+
+extension MainViewController: DrawerDelegate {
+    func drawerStateChanged(toggled: Bool) {
+        if !toggled {
+            removeChildViewController(ofType: DrawerViewController.self)
+            drawerVC = nil
+        }
+    }
+
+    func optionPressed(option: DrawerOption) {
+        removeAllChildViewControllers()
+        drawerVC = nil
+        addViewController(for: option)
+        navigationItem.title = option.rawValue
+    }
+    
+    func addViewController(for option: DrawerOption) {
+        var currentOptionViewController: AnyObject = UIViewController()
+        switch option {
+        case .Menu:
+            currentOptionViewController = (Storyboard.Menu.instanstiateController(MenuViewController.self) as? MenuViewController)!
+        case .Orders:
+            currentOptionViewController = (Storyboard.Orders.instanstiateController(OrdersViewController.self) as? OrdersViewController)!
+        case .Cart:
+            currentOptionViewController  = (Storyboard.Cart.instanstiateController(CartViewController.self) as? CartViewController)!
+        }
+        addViewControllerFillBounds(containedViewController: currentOptionViewController as! UIViewController, in: contentContainer)
+    }
+}
+

@@ -1,35 +1,35 @@
 //
-//  MainProtocols.swift
+//  CartProtocols.swift
 //  FireCart
 //
-//  Created by Plamen Iliev on 13.06.18.
+//  Created by Plamen Iliev on 15.06.18.
 //  Copyright (c) 2018 Plamen Iliev. All rights reserved.
 //
 
 import Foundation
 
 //ViewController -> Presenter
-protocol MainViewToPresenterProtocol: class{
+protocol CartViewToPresenterProtocol: class{
     //func updateView();
 }
 
 //Presenter -> ViewController
-protocol MainPresenterToViewProtocol: class{
+protocol CartPresenterToViewProtocol: class{
     func displaySomething()
 }
 
 //Presenter -> Router
-protocol MainPresenterToRouterProtocol: class{
+protocol CartPresenterToRouterProtocol: class{
     func navigateToSomewhere();
 }
 
 //Presenter -> Interactor
-protocol MainPresentorToInterectorProtocol: class{
+protocol CartPresentorToInterectorProtocol: class{
     func fetchData();
 }
 
 //Interactor -> Presenter
-protocol MainInterectorToPresenterProtocol: class{
+protocol CartInterectorToPresenterProtocol: class{
     func dataFetched();
 }
 

@@ -1,21 +1,21 @@
 //
-//  MainConfigurator.swift
+//  OrdersConfigurator.swift
 //  FireCart
 //
-//  Created by Plamen Iliev on 13.06.18.
+//  Created by Plamen Iliev on 15.06.18.
 //  Copyright (c) 2018 Plamen Iliev. All rights reserved.
 //
 
 import Foundation
 
 // MARK: - Configuration
-class MainConfigurator {
+class OrdersConfigurator {
     
-    class func configure(viewController: MainViewController) {
+    class func configure(viewController: OrdersViewController) {
         
-        let router = MainRouter()
-        let interactor = MainInteractor()
-        let presenter = MainPresenter(with: interactor, router: router)
+        let router = OrdersRouter()
+        let interactor = OrdersInteractor()
+        let presenter = OrdersPresenter(with: interactor, router: router)
         presenter.view = viewController
         
         interactor.presenter = presenter
