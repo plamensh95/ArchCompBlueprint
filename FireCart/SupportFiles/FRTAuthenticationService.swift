@@ -39,6 +39,10 @@ class FRTAuthenticationService: NSObject, GIDSignInDelegate, HudsProtocol {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions ?? [:])
     }
     
+    func currentUser() -> User? {
+        return auth.currentUser
+    }
+    
     func signIn(using provider: Provider, phoneNumber: String? = nil, completion: @escaping (Result) -> ()) {
         authenticationResult = completion
         switch provider {
@@ -68,7 +72,6 @@ class FRTAuthenticationService: NSObject, GIDSignInDelegate, HudsProtocol {
             type(of: self).google?.signIn()
             break
         case .phone:
-            logout()
             PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber ?? "", uiDelegate: nil) { (verificationID, error) in
                 if let error = error {
                     print(error.localizedDescription)
@@ -90,8 +93,11 @@ class FRTAuthenticationService: NSObject, GIDSignInDelegate, HudsProtocol {
         showHuds()
         auth.signInAndRetrieveData(with: credential) { (authResult, error) in
             self.hideHuds()
+            
+            
+            
             if let result = authResult {
-                let user = User(id: result.user.uid, name: result.user.displayName ?? "", email: result.user.email ?? "")
+                let user = FRTUser(id: result.user.uid, name: result.user.displayName ?? "", email: result.user.email ?? "")
                 self.authenticationResult!(.success(result: user))
             }
             else if let error = error {
@@ -106,7 +112,7 @@ class FRTAuthenticationService: NSObject, GIDSignInDelegate, HudsProtocol {
         auth.signIn(withEmail: email, password: password) { (authResult, error) in
             self.hideHuds()
             if let result = authResult {
-                let user = User(id: result.user.uid, name: result.user.displayName ?? "", email: email)
+                let user = FRTUser(id: result.user.uid, name: result.user.displayName ?? "", email: email)
                 completion(.success(result: user))
             }
             else if let error = error {
@@ -116,32 +122,36 @@ class FRTAuthenticationService: NSObject, GIDSignInDelegate, HudsProtocol {
         }
     }
     
-    func logout() {
+    func logout(completion: @escaping (Result) -> ()) {
         do{
             try auth.signOut()
+            completion(.success(result: nil))
         } catch let error{
+            completion(.error(error as NSError))
             print(error.localizedDescription)
         }
     }
     
-    func registerUser(with name: String, email: String, and password: String, completion: @escaping (Bool, NSError?) -> ()) {
+    func registerUser(with name: String, email: String, and password: String, completion: @escaping (Result) -> ()) {
         showHuds()
-        auth.createUser(withEmail: email, password: password) { (user, error) in
+        auth.createUser(withEmail: email, password: password) { (authResult, error) in
             self.hideHuds()
             if let error = error {
-                completion(false, error as NSError)
+                completion(.error(error as NSError))
             } else {
-                let user = User(name: name, email: email)
-                FRTFirestoreService.shared.create(object: user, in: .users, completion: { (success, error) in
-                    if success {
-                        UserDefaults.standard.setValue(email, forKey: UserDefaultsKeys.authUserEmail.rawValue)
-                        UserDefaults.standard.setValue(password, forKey: UserDefaultsKeys.authUserPass.rawValue)
-                        completion(true, nil)
-                    } else if let error = error {
-                        completion(false, error as NSError)
-                        print(error.localizedDescription)
-                    }
-                })
+                if let authUser = authResult?.user {
+                    let user = FRTUser(id: authUser.uid, name: name, email: email)
+                    FRTFirestoreService.shared.create(object: user, documentPaths: [authUser.uid], collectionReferences: [.users], completion: { (result) in
+                        switch result {
+                        case .success(result: _):
+                            UserDefaults.standard.setValue(email, forKey: UserDefaultsKeys.authUserEmail.rawValue)
+                            UserDefaults.standard.setValue(password, forKey: UserDefaultsKeys.authUserPass.rawValue)
+                            completion(.success(result: nil))
+                        case .error(let error):
+                            completion(.error(error))
+                        }
+                    })
+                }
             }
         }
     }
@@ -149,6 +159,7 @@ class FRTAuthenticationService: NSObject, GIDSignInDelegate, HudsProtocol {
     func isUserLogged() -> Bool {
         return auth.currentUser != nil ? true : false
     }
+    
     
     // MARK: - GIDSignInDelegate
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

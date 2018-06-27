@@ -12,7 +12,7 @@ protocol Identifiable {
     var id: String? {get set}
 }
 
-struct User: Codable, Identifiable{
+struct FRTUser: Codable, Identifiable{
     var id: String?
     
     var name: String?

@@ -14,10 +14,11 @@ class RegisterInteractor: RegisterPresentorToInterectorProtocol {
     
     // MARK: - PresentorToInterectorProtocol
     func registerUser(with username: String, email: String, password: String) {
-        FRTAuthenticationService.shared.registerUser(with: username, email: email, and: password) { (success, error) in
-            if success {
+        FRTAuthenticationService.shared.registerUser(with: username, email: email, and: password) { (result) in
+            switch result {
+            case .success(result: _):
                 self.presenter?.userSuccessfullyRegistered()
-            } else if let error = error {
+            case .error(let error):
                 self.presenter?.errorOccured(error: error.localizedDescription)
             }
         }

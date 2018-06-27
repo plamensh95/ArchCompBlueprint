@@ -9,14 +9,15 @@
 import UIKit
 
 class MenuViewController: UIViewController, MenuPresenterToViewProtocol {
-    
-    var categories = [Category]()
+
+    var categories = [FRTCategory]()
     var storedOffsets = [Int: CGFloat]()
     var presenter: MenuPresenter!
     @IBOutlet weak var categoriesTableView: UITableView!
     @IBOutlet weak var cartImageView: UIImageView!
     
     var movingCell: UIImageView!
+    var movingProduct: FRTProduct?
     
     let elasticity: CGFloat = 0.1
     let velocityLimit: CGFloat = 50.0
@@ -93,9 +94,13 @@ class MenuViewController: UIViewController, MenuPresenterToViewProtocol {
     }
 
     // MARK: - PresenterToViewProtocol
-    func displayMenu(content: [Category]) {
+    func displayMenu(content: [FRTCategory]) {
         categories = content
         categoriesTableView.reloadData()
+    }
+    
+    func displayAddedToCart(product: FRTProduct) {
+        
     }
     
 }
@@ -164,7 +169,6 @@ extension MenuViewController: ProductCellDelegate {
             cell.layer.render(in: UIGraphicsGetCurrentContext()!)
             let cellImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            
             movingCell = UIImageView(image: cellImage)
             movingCell.center = location
             movingCell.alpha = 0.75
@@ -172,22 +176,20 @@ extension MenuViewController: ProductCellDelegate {
             gravityBehaviour.gravityDirection = CGVector(dx: 0, dy: -1)
             pushBehaviour.pushDirection = CGVector(dx: 0, dy: -velocityLimit)
             pushBehaviour.active = true
-            
-            
-            let index = categoriesTableView.indexPathForRow(at: location)
-            guard let categoryCell = categoriesTableView.cellForRow(at: index!) as? GroupTableViewCell else { return }
-            
-            let prodlOc = categoryCell.productsCollectionView.indexPath(for: cell)
-            print(prodlOc)
-            
+            guard let categoryIndexPath = categoriesTableView.indexPathForRow(at: location), let categoryCell = categoriesTableView.cellForRow(at: categoryIndexPath) as? GroupTableViewCell,
+                let productIndexPath = categoryCell.productsCollectionView.indexPath(for: cell), let products = categories[categoryIndexPath.row].products else { return }
+            movingProduct = products[productIndexPath.row]
         case .changed:
             movingCell.center = location
         case .ended:
-            print(movingCell!.frame.intersects(cartImageView.frame))
             movingCell.removeFromSuperview()
             gravityBehaviour.gravityDirection = CGVector(dx: 0, dy: 1)
             pushBehaviour.pushDirection = CGVector(dx: 0, dy: velocityLimit)
             pushBehaviour.active = true
+            if movingCell!.frame.intersects(cartImageView.frame), let addedProduct = movingProduct {
+                presenter.addToCart(product: addedProduct)
+                movingProduct = nil
+            }
         default:
             break
         }

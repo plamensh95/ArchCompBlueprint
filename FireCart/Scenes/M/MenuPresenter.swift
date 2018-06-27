@@ -28,11 +28,15 @@ class MenuPresenter {
 }
 
 extension MenuPresenter: MenuViewToPresenterProtocol {
+    func addToCart(product: FRTProduct) {
+        interactor.addToCart(product: product)
+    }
+    
     func loadMenu() {
         interactor.fetchMenu()
     }
     
-    func loadImage(from product: Product, for cell: ProductCellProtocol) {
+    func loadImage(from product: FRTProduct, for cell: ImageCellProtocol) {
         guard let referenceURL = product.imageURL else {
             cell.setCellImage(imageData: nil)
             return
@@ -45,8 +49,13 @@ extension MenuPresenter: MenuViewToPresenterProtocol {
 }
 
 extension MenuPresenter: MenuInterectorToPresenterProtocol {
-    func menuFetched(content: [Category]) {
+
+    func menuFetched(content: [FRTCategory]) {
         view?.displayMenu(content: content)
+    }
+    
+    func addedToCart(product: FRTProduct) {
+        view?.displayAddedToCart(product: product)
     }
     
 }
