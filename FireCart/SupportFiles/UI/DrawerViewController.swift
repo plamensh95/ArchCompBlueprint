@@ -12,8 +12,9 @@ enum DrawerOption: String {
     case Menu
     case Orders
     case Cart
+    case Logout
     
-    static let allValues = [Menu, Orders, Cart]
+    static let allValues = [Menu, Orders, Cart, Logout]
 }
 
 protocol DrawerDelegate : class {

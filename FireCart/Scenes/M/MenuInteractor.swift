@@ -14,10 +14,22 @@ class MenuInteractor: MenuPresentorToInterectorProtocol {
     
     // MARK: - PresentorToInterectorProtocol
     func fetchMenu() {
-        FRTFirestoreService.shared.read(from: .categories, returning: Category.self) { (categories) in
+//        FRTFirestoreService.shared.read(from: .categories, returning: FRTCategory.self) { (categories) in
+//            var menu = categories
+//            for i in 0..<categories.count {
+//                FRTFirestoreService.shared.read(from: .products, for: categories[i].id ?? "", in: .categories, returning: FRTProduct.self, completion: { (products) in
+//                    menu[i].products = products
+//                    if i == categories.count - 1 {
+//                        self.presenter?.menuFetched(content: menu)
+//                    }
+//                })
+//            }
+//        }
+        
+        FRTFirestoreService.shared.read(for: [], in: [.categories], returning: FRTCategory.self) { (categories) in
             var menu = categories
             for i in 0..<categories.count {
-                FRTFirestoreService.shared.read(from: .products, for: categories[i].id ?? "", in: .categories, returning: Product.self, completion: { (products) in
+                FRTFirestoreService.shared.read(for: [categories[i].id ?? ""], in: [.categories, .products], returning: FRTProduct.self, completion: { (products) in
                     menu[i].products = products
                     if i == categories.count - 1 {
                         self.presenter?.menuFetched(content: menu)
@@ -30,6 +42,12 @@ class MenuInteractor: MenuPresentorToInterectorProtocol {
     func downloadImage(from referenceURL: String, completion: @escaping (Data?) -> ()) {
         FRTFirestoreService.shared.downloadImage(from: referenceURL) { (data) in
             completion(data)
+        }
+    }
+    
+    func addToCart(product: FRTProduct) {
+        CoreDataManager.create(product: product) { (result) in
+            print(result)
         }
     }
     

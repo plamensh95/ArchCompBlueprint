@@ -13,10 +13,8 @@ import FirebaseStorage
 enum FSCollectionReference: String {
     case users
     case categories
-}
-
-enum FSSubCollectionReference: String {
     case products
+    case cart
 }
 
 enum StorageDirectories: String {
@@ -39,45 +37,72 @@ class FRTFirestoreService {
         return firestore.collection(collectionReference.rawValue)
     }
     
-    func create<T: Encodable>(object: T, in collectionReference: FSCollectionReference, completion: @escaping (Bool, NSError?) -> ()) {
+    private func buildReferencePath(for documentPaths: [String], in collectionReferences: [FSCollectionReference]) -> (DocumentReference?, CollectionReference?) {
+        var docRef: DocumentReference?
+        var colRef: CollectionReference = reference(to: collectionReferences[0])
+        for i in 0..<max(documentPaths.count, collectionReferences.count) {
+            if i > 0 && i < collectionReferences.count {
+                colRef = docRef!.collection(collectionReferences[i].rawValue)
+            }
+            if i < documentPaths.count {
+                docRef = colRef.document(documentPaths[i])
+            }
+        }
+        return (collectionReferences.count + documentPaths.count) % 2 == 0 ? (docRef, nil) : (nil, colRef)
+    }
+    
+    func documentExists(documentPath: String, in collectionReference: FSCollectionReference, completion: @escaping(Bool) -> ()) {
+        reference(to: collectionReference).document(documentPath).getDocument { (document, error) in
+            if let document = document {
+                completion(document.exists)
+            }
+        }
+    }
+    
+    func create<T: Codable & Identifiable>(object: T, documentPaths: [String], collectionReferences: [FSCollectionReference], completion: @escaping (Result) -> ()) {
         do {
             let json = try object.toJSON(excluding: ["id"])
-            reference(to: collectionReference).addDocument(data: json)
-            completion(true, nil)
-        } catch {
+            let references = buildReferencePath(for: documentPaths, in: collectionReferences)
+            if let docRef = references.0 {
+                docRef.setData(json)
+                completion(.success(result: nil))
+            } else if let colRef = references.1 {
+                colRef.addDocument(data: json)
+                completion(.success(result: nil))
+            }
+        }
+        catch {
             print(error)
-            completion(false, error as NSError)
+            completion(.error(error as NSError))
         }
     }
     
-    func read<T: Decodable>(from collectionReference: FSCollectionReference, returning objectType: T.Type, completion: @escaping ([T]) -> Void) {
-        reference(to: collectionReference).addSnapshotListener { (snapshot, _) in
-            guard let snapshot = snapshot else { return }
-            var returnedObjects = [T]()
-            for document in snapshot.documents {
-                do {
-                    try returnedObjects.append(document.decode(as: objectType))
-                } catch {
-                    print(error)
+    func read<T: Decodable>(for documentPaths: [String], in collectionReferences: [FSCollectionReference], returning objectType: T.Type, completion: @escaping ([T]) -> Void) {
+        var returnedObjects = [T]()
+        let references = buildReferencePath(for: documentPaths, in: collectionReferences)
+        if let documentReference = references.0 {
+            documentReference.getDocument(completion: { (document, error) in
+                if let document = document, document.exists {
+                    do {
+                        try returnedObjects.append(document.decode(as: objectType))
+                        completion(returnedObjects)
+                    } catch {
+                        print(error)
+                    }
                 }
-            }
-            completion(returnedObjects)
-        }
-    }
-    
-    func read<T: Decodable>(from subCollectionReference: FSSubCollectionReference, for documentPath: String, in collectionReference: FSCollectionReference, returning objectType: T.Type, completion: @escaping ([T]) -> Void) {
-        let ref = reference(to: collectionReference).document(documentPath).collection(subCollectionReference.rawValue)
-        ref.addSnapshotListener { (snapshot, _) in
-            guard let snapshot = snapshot else { return }
-            var returnedObjects = [T]()
-            for document in snapshot.documents {
-                do {
-                    try returnedObjects.append(document.decode(as: objectType))
-                } catch {
-                    print(error)
+            })
+        } else if let collectionReference = references.1 {
+            collectionReference.addSnapshotListener { (snapshot, _) in
+                guard let snapshot = snapshot else { return }
+                for document in snapshot.documents {
+                    do {
+                        try returnedObjects.append(document.decode(as: objectType))
+                    } catch {
+                        print(error)
+                    }
                 }
+                completion(returnedObjects)
             }
-            completion(returnedObjects)
         }
     }
     
@@ -89,9 +114,9 @@ class FRTFirestoreService {
     }
 }
 
-extension QueryDocumentSnapshot {
+extension DocumentSnapshot {
     func decode<T: Decodable>(as objectType: T.Type, includingId: Bool = true) throws -> T {
-        var documentJSON = data()
+        guard var documentJSON = data() else { throw(JSONError.decodingError) }
         if includingId {
             documentJSON["id"] = documentID
         }

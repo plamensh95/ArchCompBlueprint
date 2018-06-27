@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ProductCellProtocol {
+protocol ImageCellProtocol {
     func setCellImage(imageData: Data?)
 }
 
@@ -16,7 +16,7 @@ protocol ProductCellDelegate: class {
     func longPressed(sender: UIScreenEdgePanGestureRecognizer, cell: ProductCollectionViewCell)
 }
 
-class ProductCollectionViewCell: UICollectionViewCell, ProductCellProtocol {
+class ProductCollectionViewCell: UICollectionViewCell, ImageCellProtocol {
     
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

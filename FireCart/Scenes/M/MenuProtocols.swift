@@ -11,12 +11,14 @@ import Foundation
 //ViewController -> Presenter
 protocol MenuViewToPresenterProtocol: class{
     func loadMenu()
-    func loadImage(from product: Product, for cell: ProductCellProtocol)
+    func loadImage(from product: FRTProduct, for cell: ImageCellProtocol)
+    func addToCart(product: FRTProduct)
 }
 
 //Presenter -> ViewController
 protocol MenuPresenterToViewProtocol: class{
-    func displayMenu(content: [Category])
+    func displayMenu(content: [FRTCategory])
+    func displayAddedToCart(product: FRTProduct)
 }
 
 //Presenter -> Router
@@ -28,11 +30,13 @@ protocol MenuPresenterToRouterProtocol: class{
 protocol MenuPresentorToInterectorProtocol: class{
     func downloadImage(from referenceURL: String, completion: @escaping(Data?) -> ())
     func fetchMenu()
+    func addToCart(product: FRTProduct)
 }
 
 //Interactor -> Presenter
 protocol MenuInterectorToPresenterProtocol: class{
-    func menuFetched(content: [Category])
+    func menuFetched(content: [FRTCategory])
+    func addedToCart(product: FRTProduct)
 }
 
 

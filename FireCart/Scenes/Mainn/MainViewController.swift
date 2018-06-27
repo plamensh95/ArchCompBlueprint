@@ -2,17 +2,15 @@
 //  MainViewController.swift
 //  FireCart
 //
-//  Created by Plamen Iliev on 25.06.18.
+//  Created by Plamen Iliev on 13.06.18.
 //  Copyright (c) 2018 Plamen Iliev. All rights reserved.
 //
 
 import UIKit
 
-class MainViewController: UIViewController, MainPresenterToViewProtocol {
-
-    @IBOutlet weak var contentContainer: UIView!
+class MainnViewController: UIViewController {
     
-    var presenter: MainPresenter!
+    @IBOutlet weak var contentContainer: UIView!
     var drawerVC: DrawerViewController?
     
     var currentOption: DrawerOption = .Menu
@@ -21,25 +19,6 @@ class MainViewController: UIViewController, MainPresenterToViewProtocol {
     var rightEdgePanRecognizer = UIScreenEdgePanGestureRecognizer()
     var taprecognizer = UITapGestureRecognizer()
     
-    // MARK: - Object lifecycle
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        // Do not ask for presenter before this call
-        self.setupVIPER()
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-        // Do not ask for presenter before this call
-        self.setupVIPER()
-    }
-    
-    // MARK: - Initilization
-    func setupVIPER() {
-        MainConfigurator.configure(viewController: self)
-    }
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -53,7 +32,7 @@ class MainViewController: UIViewController, MainPresenterToViewProtocol {
         // Do not ask for drawer before this call
         if isFirstLoad {
             addViewController(for: currentOption)
-            //            initDrawer(toggled: true)
+//            initDrawer(toggled: true)
             isFirstLoad = false
         }
     }
@@ -79,15 +58,10 @@ class MainViewController: UIViewController, MainPresenterToViewProtocol {
         drawerVC?.drawerDelegate = self
         addViewControllerFillBounds(containedViewController: drawerVC!, in: contentContainer)
     }
-
-    // MARK: - PresenterToViewProtocol
-    func displayError(error: String) {
-        UIAlertController(title: DialogTittles.error.rawValue, message: error , defaultActionButtonTitle: "OK", tintColor: UIColor.blue).show()
-    }
     
 }
 
-extension MainViewController: UIGestureRecognizerDelegate {
+extension MainnViewController: UIGestureRecognizerDelegate {
     private func setupGestureRecognizers() {
         leftEdgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleEdgePan(sender:)))
         leftEdgePanRecognizer.edges = .left
@@ -118,14 +92,14 @@ extension MainViewController: UIGestureRecognizerDelegate {
     
 }
 
-extension MainViewController: DrawerDelegate {
+extension MainnViewController: DrawerDelegate {
     func drawerStateChanged(toggled: Bool) {
         if !toggled {
             removeChildViewController(ofType: DrawerViewController.self)
             drawerVC = nil
         }
     }
-    
+
     func optionPressed(option: DrawerOption) {
         removeAllChildViewControllers()
         drawerVC = nil
@@ -143,9 +117,9 @@ extension MainViewController: DrawerDelegate {
         case .Cart:
             currentOptionViewController  = (Storyboard.Cart.instanstiateController(CartViewController.self) as? CartViewController)!
         case .Logout:
-            presenter.logoutButtonPressed()
-            return
+            FRTAuthenticationService.shared.logout()
         }
         addViewControllerFillBounds(containedViewController: currentOptionViewController as! UIViewController, in: contentContainer)
     }
 }
+

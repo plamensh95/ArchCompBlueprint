@@ -27,16 +27,19 @@
             <PersistentString
                value = "error.localizedDescription">
             </PersistentString>
+            <PersistentString
+               value = "result.user.uid">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MainViewController.handlePan(sender:):MainViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "isDrawerToggled">
+               value = "drawerViewLeadingConstraint.constant">
             </PersistentString>
             <PersistentString
-               value = "drawerViewLeadingConstraint.constant">
+               value = "isDrawerToggled">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -74,10 +77,10 @@
          contextName = "MainViewController.handlePan(_:):MainViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "drawerViewLeadingConstraint.constant">
+               value = "isDrawerToggled">
             </PersistentString>
             <PersistentString
-               value = "isDrawerToggled">
+               value = "drawerViewLeadingConstraint.constant">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -170,6 +173,14 @@
          contextName = "DrawerViewController.handlePan(sender:):DrawerViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "closure #1 in FRTAuthenticationService.registerUser(with:email:and:completion:):FRTAuthenticationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "authUser.uid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MainViewController.gestureRecognizer(_:shouldReceive:):MainViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -178,7 +189,40 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in FRTAuthenticationService.loginUser(with:and:completion:):FRTAuthenticationService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "result.user.uid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MenuViewController.categories.didset:MenuViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FRTFirestoreService.create&lt;A&gt;(object:in:completion:):FRTFirestoreService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "object.id">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Encodable.toJSON(excluding:):EncodableExtension.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in FRTFirestoreService.read&lt;A&gt;(from:for:in:returning:completion:):FRTFirestoreService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "documentPath">
+            </PersistentString>
+            <PersistentString
+               value = "subCollectionReference">
+            </PersistentString>
+            <PersistentString
+               value = "collectionReference">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-struct Category: Codable, Identifiable {
+struct FRTCategory: Codable, Identifiable {
     var id: String?
     var name: String?
-    var products: [Product]?
+    var products: [FRTProduct]?
     
-    init(id: String? = nil, name: String, products: [Product]) {
+    init(id: String? = nil, name: String, products: [FRTProduct]) {
         self.id = id
         self.name = name
         self.products = products

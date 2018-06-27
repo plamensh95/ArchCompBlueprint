@@ -53,3 +53,13 @@ enum Result {
     case error(NSError)
 }
 
+enum EntityName: String {
+    case cartProduct = "CartProduct"
+}
+
+enum TableViewRowAction {
+    case reload
+    case insert
+    case delete
+}
+

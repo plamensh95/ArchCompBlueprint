@@ -10,12 +10,14 @@ import Foundation
 import UIKit
 
 extension UINavigationController {
-    func popToController (name : AnyClass) {
-        for controller in self.viewControllers {
+    func popToController<T>(name : AnyClass, type: T.Type) -> T? {
+        for controller in self.viewControllers.reversed() {
             if controller.isKind(of: name) {
                 self.popToViewController(controller, animated: true)
+                return controller as? T
             }
         }
+        return nil
     }
     static func instantiateLikeRoot (vc : UIViewController) {
         let navController = UINavigationController.init(rootViewController: vc)
